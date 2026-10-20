@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rexon Elebe – CV API</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--text:#14181f;--muted:#667085;--line:#e3e6eb;--accent:#2563eb;--ok:#16a34a;--code:#0f172a;--codet:#d6e2ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1117;--card:#161b22;--text:#e6edf3;--muted:#8b949e;--line:#2a313c;--accent:#58a6ff;--ok:#3fb950;--code:#0a0e14;--codet:#c9d7ee}}
+:root[data-theme="dark"]{--bg:#0d1117;--card:#161b22;--text:#e6edf3;--muted:#8b949e;--line:#2a313c;--accent:#58a6ff;--ok:#3fb950;--code:#0a0e14;--codet:#c9d7ee}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:20px 16px 40px}
+.hero{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.hero img{width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:3px solid var(--line)}
+.hero h1{font-size:24px;margin:0}
+.tag{color:var(--accent);font-weight:600;margin:2px 0}
+.hero p{margin:4px 0 0;color:var(--muted);max-width:620px}
+.links{margin:12px 0 18px;display:flex;gap:10px;flex-wrap:wrap}
+.links a{font-size:13px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--text);text-decoration:none;background:var(--card)}
+.links a:hover{border-color:var(--accent)}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ok);font-weight:600}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:p 2s infinite}
+@keyframes p{50%{opacity:.3}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.stat b{display:block;font-size:24px}
+.stat span{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1.3fr;gap:16px;margin-bottom:16px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 10px}
+.ep{display:flex;gap:8px;align-items:center;width:100%;text-align:left;background:none;border:1px solid var(--line);color:var(--text);padding:9px 10px;border-radius:8px;margin-bottom:8px;cursor:pointer;font:inherit}
+.ep:hover,.ep.on{border-color:var(--accent)}
+.get{font:700 11px ui-monospace,monospace;color:var(--ok)}
+.path{font-family:ui-monospace,Menlo,monospace;font-size:13px}
+pre{margin:0;background:var(--code);color:var(--codet);padding:14px;border-radius:10px;overflow:auto;max-height:330px;font:12.5px/1.55 ui-monospace,Menlo,monospace;min-height:210px}
+.meta{display:flex;gap:12px;font-size:12px;color:var(--muted);margin-top:8px;flex-wrap:wrap}
+.meta b{color:var(--ok)}
+.chart{display:flex;align-items:flex-end;gap:3px;height:90px}
+.chart i{flex:1;background:var(--accent);border-radius:3px 3px 0 0;opacity:.85;min-height:3px}
+.axis{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px}
+.scroll{overflow-x:auto}
+.log{width:100%;border-collapse:collapse;font:12px ui-monospace,Menlo,monospace}
+.log td{padding:5px 6px;border-top:1px solid var(--line);white-space:nowrap}
+.log td:first-child{color:var(--muted)}
+.note{font-size:12px;color:var(--muted)}
+.note a{color:var(--muted)}
+code{font-family:ui-monospace,monospace;background:var(--line);padding:1px 6px;border-radius:4px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero">
+<img src="/static/photo.jpg" alt="Portrait of Rexon Elebe">
+<div>
+<h1 id="name">Rexon O. Elebe</h1>
+<div class="tag" id="title"></div>
+<p id="summary"></p>
+</div>
+</div>
+<div class="links">
+<a href="/docs">API documentation</a>
+<a href="/api/cv">Full CV as JSON</a>
+<span class="badge"><span class="dot"></span><span id="up">API online</span></span>
+</div>
+
+<div class="stats">
+<div class="card stat"><b id="s1">–</b><span>Requests (24 h)</span></div>
+<div class="card stat"><b id="s2">–</b><span>Total requests</span></div>
+<div class="card stat"><b id="s3">–</b><span>Avg. response time</span></div>
+<div class="card stat"><b id="s4">–</b><span>Visitors (7 days)</span></div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h2>Try the API</h2>
+<div id="eps"></div>
+<p class="note">Or in a terminal: <code>curl /api/skills</code> on this domain.</p>
+</div>
+<div class="card">
+<h2>Live response</h2>
+<pre id="out">Click an endpoint…</pre>
+<div class="meta" id="meta"></div>
+</div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h2>Requests per hour (last 24 h)</h2>
+<div class="chart" id="chart"></div>
+<div class="axis"><span>24 h ago</span><span>12 h</span><span>now</span></div>
+</div>
+<div class="card">
+<h2>Latest requests</h2>
+<div class="scroll"><table class="log"><tbody id="log"></tbody></table></div>
+</div>
+</div>
+
+<p class="note">Built with Python, FastAPI, SQLite and Docker. Visitors are counted anonymously: no IP addresses are stored. · <a href="/impressum">Impressum</a></p>
+</div>
+<script>
+var $=function(id){return document.getElementById(id)};
+var EPS=["/api/profile","/api/skills","/api/experience","/api/education","/api/certificates","/api/projects","/api/status"];
+EPS.forEach(function(p){
+  var b=document.createElement("button");b.className="ep";
+  var g=document.createElement("span");g.className="get";g.textContent="GET";
+  var s=document.createElement("span");s.className="path";s.textContent=p;
+  b.appendChild(g);b.appendChild(s);
+  b.onclick=function(){send(p,b)};
+  $("eps").appendChild(b);
+});
+function send(p,btn){
+  document.querySelectorAll(".ep").forEach(function(e){e.classList.remove("on")});
+  btn.classList.add("on");
+  $("out").textContent="Sending request…";
+  var t=performance.now();
+  fetch(p).then(function(r){
+    return r.json().then(function(j){
+      var ms=Math.round(performance.now()-t);
+      $("out").textContent=JSON.stringify(j,null,2);
+      var m=$("meta");m.textContent="";
+      [["Status "+r.status+" "+(r.ok?"OK":"Error"),true],["Time "+ms+" ms",false],["application/json",false]].forEach(function(x){
+        var sp=document.createElement("span");
+        if(x[1]){var bb=document.createElement("b");bb.textContent=x[0];sp.appendChild(bb)}else{sp.textContent=x[0]}
+        m.appendChild(sp);
+      });
+      setTimeout(loadStats,400);
+    });
+  }).catch(function(){$("out").textContent="Request failed."});
+}
+function fmtUp(s){var d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);return d?d+"d "+h+"h":h?h+"h "+m+"m":m+"m"}
+function loadStats(){
+  fetch("/api/stats").then(function(r){return r.json()}).then(function(s){
+    $("s1").textContent=s.last_24h.toLocaleString("en-US");
+    $("s2").textContent=s.total.toLocaleString("en-US");
+    $("s3").textContent=Math.round(s.avg_ms)+" ms";
+    $("s4").textContent=s.visitors_7d.toLocaleString("en-US");
+    $("up").textContent="API online · up "+fmtUp(s.uptime_seconds);
+    var max=Math.max.apply(null,s.hourly.concat([1]));
+    var ch=$("chart");ch.textContent="";
+    s.hourly.forEach(function(v){var i=document.createElement("i");i.style.height=Math.max(3,v/max*88)+"px";i.title=v+" requests";ch.appendChild(i)});
+    var lg=$("log");lg.textContent="";
+    s.recent.forEach(function(r){
+      var tr=document.createElement("tr");
+      [r.ts.slice(11,19)+" UTC",r.path,r.status,Math.round(r.ms)+" ms"].forEach(function(v){
+        var td=document.createElement("td");td.textContent=v;tr.appendChild(td);
+      });
+      lg.appendChild(tr);
+    });
+  }).catch(function(){});
+}
+fetch("/api/profile").then(function(r){return r.json()}).then(function(p){
+  $("name").textContent=p.name;$("title").textContent=p.title+" · "+p.location;$("summary").textContent=p.summary;
+}).catch(function(){});
+loadStats();setInterval(loadStats,15000);
+</script>
+</body>
+</html>

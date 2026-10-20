@@ -1,0 +1,46 @@
+{
+  "profile": {
+    "name": "Rexon O. Elebe",
+    "title": "Aspiring IT specialist",
+    "location": "Bremen, Germany",
+    "seeking": "Ausbildung or entry-level role in IT",
+    "summary": "Fascinated by robotics, software development, cybersecurity, automation and machine learning. I keep learning, follow industry trends, and aim to build innovative, efficient solutions. This CV is itself a small backend project.",
+    "languages": [
+      {"language": "English", "level": "Native"},
+      {"language": "German", "level": "B1"}
+    ],
+    "contact_email": "rexelebe@yahoo.com"
+  },
+  "skills": {
+    "programming": ["C/C++", "Python", "JavaScript", "CSS", "MATLAB"],
+    "databases": ["SQL (Oracle)"],
+    "tools": ["Microsoft Office", "Microsoft Project"],
+    "focus_areas": ["Cybersecurity", "Robotics", "Automation", "Machine learning"]
+  },
+  "experience": [
+    {"role": "Bartender, VIP Lounge / Skybox", "company": "Weserstadion", "city": "Bremen", "from": "2025-11", "to": "present",
+     "highlights": ["Personal service for VIP and corporate guests across several private skyboxes at large events", "Prepared premium spirits, champagne and craft cocktails to strict service standards"]},
+    {"role": "Corporate English teacher (Minijob)", "company": "Sprachschule Aktiv", "city": "Bremen", "from": "2023-06", "to": "present",
+     "highlights": ["Business English for employees of Thyssenkrupp Automation Engineering GmbH and Wiethe Content GmbH"]},
+    {"role": "Working student, bar service", "company": "Café & Bar Celona", "city": "Bremen", "from": "2023-11", "to": "2025-08",
+     "highlights": ["Fast, precise drink service during peak hours", "Built customer relationships that encouraged repeat visits"]},
+    {"role": "Working student", "company": "ZAG (client: THIMM Group)", "city": "Bremen", "from": "2022-06", "to": "2023-01", "highlights": []},
+    {"role": "Logistics operations, dispatch", "company": "Grand-TexWest Motors of PA", "city": "Pennsylvania, USA", "from": "2019-08", "to": "2020-06",
+     "highlights": ["Planned and coordinated freight transport across Pennsylvania", "Tracked shipments to ensure on-time delivery", "Customer support and solving logistics problems"]}
+  ],
+  "education": [
+    {"school": "Constructor University", "city": "Bremen", "degree": "B.Sc. Electrical and Computer Engineering", "from": "2022-09", "to": "paused",
+     "courses": ["General Electrical Engineering I & II (with lab)", "Classical Physics (with lab)", "Intro to Robotics & Intelligent Systems (with lab)", "Intro to Computer Science", "Analysis and Linear Algebra I & II", "Programming in C/C++"]},
+    {"school": "Poltava National University", "city": "Ukraine", "degree": "B.Sc. Computer Engineering", "from": "2019-11", "to": "2022-01",
+     "courses": ["Higher Mathematics", "Physics", "Computer Circuits", "Discrete Structures", "Numerical Methods"]},
+    {"school": "Anglican Grammar School", "city": "Delta State, Nigeria", "degree": "WAEC, science track", "from": "2012-09", "to": "2018-06", "courses": []}
+  ],
+  "certificates": [
+    {"name": "Google Cybersecurity", "date": "2023-06", "topics": ["Network security", "Cryptography", "Risk management", "Security governance", "Ethical hacking basics"]},
+    {"name": "Python for Everybody", "issuer": "University of Michigan", "date": "2023-06", "topics": ["File handling", "Web scraping", "SQL integration", "Data visualization", "Flask and Django"]},
+    {"name": "Oracle Database Foundations", "issuer": "LearnQuest", "date": "2023-07", "topics": ["SQL queries", "Database design and normalization", "Backup and recovery", "Database security", "Performance tuning"]}
+  ],
+  "projects": [
+    {"id": 1, "name": "CV API", "description": "This site: my CV served as a live REST API with an anonymous request dashboard.", "stack": ["Python", "FastAPI", "SQLite", "Docker"], "status": "live"}
+  ]
+}
