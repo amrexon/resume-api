@@ -19,7 +19,7 @@ Browser ──HTTPS──▶ Caddy (TLS via Let's Encrypt, ports 80/443)
 ```
 
 - **Caddy** terminates HTTPS, renews certificates automatically and redirects `www` and plain HTTP to `https://rexelebe.de`.
-- **FastAPI** serves the CV endpoints, the dashboard and auto-generated API docs.
+- **FastAPI** serves the CV endpoints in English and German (`cv.json`, `cv.de.json`), the dashboard and auto-generated API docs.
 - **SQLite** stores an anonymous request log in a Docker volume, so stats survive restarts and redeploys.
 - A **Hetzner Cloud firewall** only allows SSH (22), HTTP (80) and HTTPS (443).
 
@@ -37,7 +37,9 @@ Browser ──HTTPS──▶ Caddy (TLS via Let's Encrypt, ports 80/443)
 | `GET /api/status` | Health check |
 | `GET /api/stats` | Anonymous usage statistics |
 
-Try it: `curl https://rexelebe.de/api/skills`
+All CV endpoints accept an optional `lang` parameter: English is the default, `?lang=de` returns German. The dashboard has an EN/DE switch, and `https://rexelebe.de/?lang=de` opens it in German.
+
+Try it: `curl https://rexelebe.de/api/skills` or `curl https://rexelebe.de/api/skills?lang=de`
 
 ## Privacy
 

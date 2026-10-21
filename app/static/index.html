@@ -46,12 +46,23 @@ pre{margin:0;background:var(--code);color:var(--codet);padding:14px;border-radiu
 .note{font-size:12px;color:var(--muted)}
 .note a{color:var(--muted)}
 code{font-family:ui-monospace,monospace;background:var(--line);padding:1px 6px;border-radius:4px;font-size:12px}
+.top{display:flex;justify-content:flex-end;margin-bottom:8px}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+.lang button{border:0;background:none;color:var(--muted);font:600 12px system-ui,-apple-system,sans-serif;padding:6px 14px;cursor:pointer;min-width:44px;min-height:32px}
+.lang button[aria-pressed="true"]{background:var(--accent);color:var(--bg)}
+.lang button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 </style>
 </head>
 <body>
 <div class="wrap">
+<div class="top">
+<div class="lang" role="group" aria-label="Language / Sprache">
+<button type="button" data-lang="en" aria-pressed="true">EN</button>
+<button type="button" data-lang="de" aria-pressed="false">DE</button>
+</div>
+</div>
 <div class="hero">
-<img src="/static/photo.jpg" alt="Portrait of Rexon Elebe">
+<img id="photo" src="/static/photo.jpg" alt="Portrait of Rexon Elebe">
 <div>
 <h1 id="name">Rexon O. Elebe</h1>
 <div class="tag" id="title"></div>
@@ -59,26 +70,26 @@ code{font-family:ui-monospace,monospace;background:var(--line);padding:1px 6px;b
 </div>
 </div>
 <div class="links">
-<a href="/docs">API documentation</a>
-<a href="/api/cv">Full CV as JSON</a>
+<a href="/docs" data-i18n="docs">API documentation</a>
+<a href="/api/cv" id="full" data-i18n="full">Full CV as JSON</a>
 <span class="badge"><span class="dot"></span><span id="up">API online</span></span>
 </div>
 
 <div class="stats">
-<div class="card stat"><b id="s1">–</b><span>Requests (24 h)</span></div>
-<div class="card stat"><b id="s2">–</b><span>Total requests</span></div>
-<div class="card stat"><b id="s3">–</b><span>Avg. response time</span></div>
-<div class="card stat"><b id="s4">–</b><span>Visitors (7 days)</span></div>
+<div class="card stat"><b id="s1">–</b><span data-i18n="s1">Requests (24 h)</span></div>
+<div class="card stat"><b id="s2">–</b><span data-i18n="s2">Total requests</span></div>
+<div class="card stat"><b id="s3">–</b><span data-i18n="s3">Avg. response time</span></div>
+<div class="card stat"><b id="s4">–</b><span data-i18n="s4">Visitors (7 days)</span></div>
 </div>
 
 <div class="grid">
 <div class="card">
-<h2>Try the API</h2>
+<h2 data-i18n="try">Try the API</h2>
 <div id="eps"></div>
-<p class="note">Or in a terminal: <code>curl https://rexelebe.de/api/skills</code></p>
+<p class="note"><span data-i18n="term">Or in a terminal:</span> <code id="curl">curl https://rexelebe.de/api/skills</code></p>
 </div>
 <div class="card">
-<h2>Live response</h2>
+<h2 data-i18n="resp">Live response</h2>
 <pre id="out">Click an endpoint…</pre>
 <div class="meta" id="meta"></div>
 </div>
@@ -86,72 +97,117 @@ code{font-family:ui-monospace,monospace;background:var(--line);padding:1px 6px;b
 
 <div class="grid">
 <div class="card">
-<h2>Requests per hour (last 24 h)</h2>
+<h2 data-i18n="perhour">Requests per hour (last 24 h)</h2>
 <div class="chart" id="chart"></div>
-<div class="axis"><span>24 h ago</span><span>12 h</span><span>now</span></div>
+<div class="axis"><span data-i18n="ago">24 h ago</span><span>12 h</span><span data-i18n="now">now</span></div>
 </div>
 <div class="card">
-<h2>Latest requests</h2>
+<h2 data-i18n="latest">Latest requests</h2>
 <div class="scroll"><table class="log"><tbody id="log"></tbody></table></div>
 </div>
 </div>
 
-<p class="note">Built with Python, FastAPI, SQLite and Docker. Visitors are counted anonymously: no IP addresses are stored. · <a href="/impressum">Impressum</a></p>
+<p class="note"><span data-i18n="footer">Built with Python, FastAPI, SQLite and Docker. Visitors are counted anonymously: no IP addresses are stored.</span> · <a href="/impressum">Impressum</a></p>
 </div>
 <script>
 var $=function(id){return document.getElementById(id)};
+var T={
+  en:{docs:"API documentation",full:"Full CV as JSON",online:"API online",up:"up",s1:"Requests (24 h)",s2:"Total requests",s3:"Avg. response time",s4:"Visitors (7 days)",try:"Try the API",term:"Or in a terminal:",resp:"Live response",click:"Click an endpoint…",sending:"Sending request…",failed:"Request failed.",time:"Time",perhour:"Requests per hour (last 24 h)",ago:"24 h ago",now:"now",latest:"Latest requests",requests:"requests",photo:"Portrait of Rexon Elebe",footer:"Built with Python, FastAPI, SQLite and Docker. Visitors are counted anonymously: no IP addresses are stored.",locale:"en-US"},
+  de:{docs:"API-Dokumentation",full:"Gesamter Lebenslauf als JSON",online:"API online",up:"läuft seit",s1:"Anfragen (24 h)",s2:"Anfragen gesamt",s3:"Ø Antwortzeit",s4:"Besucher (7 Tage)",try:"API ausprobieren",term:"Oder im Terminal:",resp:"Live-Antwort",click:"Klicke auf einen Endpunkt…",sending:"Anfrage wird gesendet…",failed:"Anfrage fehlgeschlagen.",time:"Zeit",perhour:"Anfragen pro Stunde (letzte 24 h)",ago:"vor 24 h",now:"jetzt",latest:"Letzte Anfragen",requests:"Anfragen",photo:"Porträt von Rexon Elebe",footer:"Gebaut mit Python, FastAPI, SQLite und Docker. Besucher werden anonym gezählt: Es werden keine IP-Adressen gespeichert.",locale:"de-DE"}
+};
+// CV endpoints accept ?lang=de; /api/status has no language
 var EPS=["/api/profile","/api/skills","/api/experience","/api/education","/api/certificates","/api/projects","/api/status"];
-EPS.forEach(function(p){
-  var b=document.createElement("button");b.className="ep";
-  var g=document.createElement("span");g.className="get";g.textContent="GET";
-  var s=document.createElement("span");s.className="path";s.textContent=p;
-  b.appendChild(g);b.appendChild(s);
-  b.onclick=function(){send(p,b)};
-  $("eps").appendChild(b);
-});
+var LANGUAGED=function(p){return p!=="/api/status"};
+function initialLang(){
+  var q=new URLSearchParams(location.search).get("lang");
+  if(q==="en"||q==="de")return q;
+  try{var s=localStorage.getItem("lang");if(s==="en"||s==="de")return s}catch(e){}
+  return "en";
+}
+var LANG=initialLang(),current=null,lastStats=null;
+function t(k){return T[LANG][k]}
+function withLang(p){return LANG==="de"&&LANGUAGED(p)?p+"?lang=de":p}
+function buildEndpoints(){
+  var box=$("eps");box.textContent="";
+  EPS.forEach(function(p){
+    var b=document.createElement("button");b.className="ep";b.type="button";
+    var g=document.createElement("span");g.className="get";g.textContent="GET";
+    var s=document.createElement("span");s.className="path";s.textContent=withLang(p);
+    b.appendChild(g);b.appendChild(s);
+    if(p===current)b.classList.add("on");
+    b.onclick=function(){send(p,b)};
+    box.appendChild(b);
+  });
+}
 function send(p,btn){
+  current=p;
   document.querySelectorAll(".ep").forEach(function(e){e.classList.remove("on")});
-  btn.classList.add("on");
-  $("out").textContent="Sending request…";
-  var t=performance.now();
-  fetch(p).then(function(r){
+  if(btn)btn.classList.add("on");
+  $("out").textContent=t("sending");
+  var start=performance.now();
+  fetch(withLang(p)).then(function(r){
     return r.json().then(function(j){
-      var ms=Math.round(performance.now()-t);
+      var ms=Math.round(performance.now()-start);
       $("out").textContent=JSON.stringify(j,null,2);
       var m=$("meta");m.textContent="";
-      [["Status "+r.status+" "+(r.ok?"OK":"Error"),true],["Time "+ms+" ms",false],["application/json",false]].forEach(function(x){
+      [["Status "+r.status+" "+(r.ok?"OK":"Error"),true],[t("time")+" "+ms+" ms",false],["application/json",false]].forEach(function(x){
         var sp=document.createElement("span");
         if(x[1]){var bb=document.createElement("b");bb.textContent=x[0];sp.appendChild(bb)}else{sp.textContent=x[0]}
         m.appendChild(sp);
       });
       setTimeout(loadStats,400);
     });
-  }).catch(function(){$("out").textContent="Request failed."});
+  }).catch(function(){$("out").textContent=t("failed")});
 }
 function fmtUp(s){var d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);return d?d+"d "+h+"h":h?h+"h "+m+"m":m+"m"}
-function loadStats(){
-  fetch("/api/stats").then(function(r){return r.json()}).then(function(s){
-    $("s1").textContent=s.last_24h.toLocaleString("en-US");
-    $("s2").textContent=s.total.toLocaleString("en-US");
-    $("s3").textContent=Math.round(s.avg_ms)+" ms";
-    $("s4").textContent=s.visitors_7d.toLocaleString("en-US");
-    $("up").textContent="API online · up "+fmtUp(s.uptime_seconds);
-    var max=Math.max.apply(null,s.hourly.concat([1]));
-    var ch=$("chart");ch.textContent="";
-    s.hourly.forEach(function(v){var i=document.createElement("i");i.style.height=Math.max(3,v/max*88)+"px";i.title=v+" requests";ch.appendChild(i)});
-    var lg=$("log");lg.textContent="";
-    s.recent.forEach(function(r){
-      var tr=document.createElement("tr");
-      [r.ts.slice(11,19)+" UTC",r.path,r.status,Math.round(r.ms)+" ms"].forEach(function(v){
-        var td=document.createElement("td");td.textContent=v;tr.appendChild(td);
-      });
-      lg.appendChild(tr);
+function renderStats(s){
+  var loc=t("locale");
+  $("s1").textContent=s.last_24h.toLocaleString(loc);
+  $("s2").textContent=s.total.toLocaleString(loc);
+  $("s3").textContent=Math.round(s.avg_ms)+" ms";
+  $("s4").textContent=s.visitors_7d.toLocaleString(loc);
+  $("up").textContent=t("online")+" · "+t("up")+" "+fmtUp(s.uptime_seconds);
+  var max=Math.max.apply(null,s.hourly.concat([1]));
+  var ch=$("chart");ch.textContent="";
+  s.hourly.forEach(function(v){var i=document.createElement("i");i.style.height=Math.max(3,v/max*88)+"px";i.title=v+" "+t("requests");ch.appendChild(i)});
+  var lg=$("log");lg.textContent="";
+  s.recent.forEach(function(r){
+    var tr=document.createElement("tr");
+    [r.ts.slice(11,19)+" UTC",r.path,r.status,Math.round(r.ms)+" ms"].forEach(function(v){
+      var td=document.createElement("td");td.textContent=v;tr.appendChild(td);
     });
+    lg.appendChild(tr);
+  });
+}
+function loadStats(){
+  fetch("/api/stats").then(function(r){return r.json()}).then(function(s){lastStats=s;renderStats(s)}).catch(function(){});
+}
+function loadProfile(){
+  fetch(withLang("/api/profile")).then(function(r){return r.json()}).then(function(p){
+    $("name").textContent=p.name;$("title").textContent=p.title+" · "+p.location;$("summary").textContent=p.summary;
   }).catch(function(){});
 }
-fetch("/api/profile").then(function(r){return r.json()}).then(function(p){
-  $("name").textContent=p.name;$("title").textContent=p.title+" · "+p.location;$("summary").textContent=p.summary;
-}).catch(function(){});
+function applyLang(){
+  document.documentElement.lang=LANG;
+  document.querySelectorAll("[data-i18n]").forEach(function(el){el.textContent=t(el.getAttribute("data-i18n"))});
+  document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-lang")===LANG))});
+  $("photo").alt=t("photo");
+  $("full").href=withLang("/api/cv");
+  $("curl").textContent="curl https://rexelebe.de"+withLang("/api/skills");
+  buildEndpoints();
+  loadProfile();
+  if(current){send(current,document.querySelector(".ep.on"))}else{$("out").textContent=t("click");$("meta").textContent=""}
+  if(lastStats)renderStats(lastStats);
+}
+function setLang(l){
+  if(l===LANG)return;
+  LANG=l;
+  try{localStorage.setItem("lang",l)}catch(e){}
+  try{var u=new URL(location.href);if(l==="de"){u.searchParams.set("lang","de")}else{u.searchParams.delete("lang")}history.replaceState(null,"",u)}catch(e){}
+  applyLang();
+}
+document.querySelectorAll(".lang button").forEach(function(b){b.onclick=function(){setLang(b.getAttribute("data-lang"))}});
+applyLang();
 loadStats();setInterval(loadStats,15000);
 </script>
 </body>

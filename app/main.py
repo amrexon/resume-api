@@ -7,15 +7,24 @@ import sqlite3
 import time
 from contextlib import closing
 from pathlib import Path
+from typing import Literal
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Query, Request
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 BASE = Path(__file__).parent
 DB_PATH = os.environ.get("DB_PATH", str(BASE / "data" / "requests.db"))
 SALT = os.environ.get("VISITOR_SALT", "change-me")
-CV = json.loads((BASE / "data" / "cv.json").read_text(encoding="utf-8"))
+# CV content per language: English is the default, German is optional via ?lang=de
+CV = {
+    "en": json.loads((BASE / "data" / "cv.json").read_text(encoding="utf-8")),
+    "de": json.loads((BASE / "data" / "cv.de.json").read_text(encoding="utf-8")),
+}
+# Both language files must have the same sections, or the API would answer differently per language
+assert set(CV["en"]) == set(CV["de"]), "cv.json and cv.de.json must have the same sections"
+Lang = Literal["en", "de"]
+LANG_HELP = "Language of the content: en (English, default) or de (German)"
 STARTED = time.time()
 
 app = FastAPI(
@@ -64,8 +73,8 @@ async def log_requests(request: Request, call_next):
 
 
 def _register(name: str):
-    def handler():
-        return CV[name]
+    def handler(lang: Lang = Query("en", description=LANG_HELP)):
+        return CV[lang][name]
     app.get(f"/api/{name}", tags=["CV"], summary=f"Get {name}", name=name)(handler)
 
 
@@ -74,8 +83,8 @@ for _name in ["profile", "skills", "experience", "education", "certificates", "p
 
 
 @app.get("/api/cv", tags=["CV"], summary="Get the whole CV")
-def full_cv():
-    return CV
+def full_cv(lang: Lang = Query("en", description=LANG_HELP)):
+    return CV[lang]
 
 
 @app.get("/api/status", tags=["System"], summary="Health check")

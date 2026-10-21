@@ -1,0 +1,46 @@
+{
+  "profile": {
+    "name": "Rexon O. Elebe",
+    "title": "Angehender IT-Spezialist",
+    "location": "Bremen, Deutschland",
+    "seeking": "Ausbildung oder Einstiegsposition in der IT",
+    "summary": "Fasziniert von Robotik, Softwareentwicklung, Cybersicherheit, Automatisierung und maschinellem Lernen. Ich lerne kontinuierlich, verfolge aktuelle Branchentrends und möchte innovative, effiziente Lösungen entwickeln. Dieser Lebenslauf ist selbst ein kleines Backend-Projekt.",
+    "languages": [
+      {"language": "Englisch", "level": "Muttersprache"},
+      {"language": "Deutsch", "level": "B1"}
+    ],
+    "contact_email": "rexelebe@yahoo.com"
+  },
+  "skills": {
+    "programming": ["C/C++", "Python", "JavaScript", "CSS", "MATLAB"],
+    "databases": ["SQL (Oracle)"],
+    "tools": ["Microsoft Office", "Microsoft Project"],
+    "focus_areas": ["Cybersicherheit", "Robotik", "Automatisierung", "Maschinelles Lernen"]
+  },
+  "experience": [
+    {"role": "Barkeeper, VIP-Lounge / Skybox", "company": "Weserstadion", "city": "Bremen", "from": "2025-11", "to": "heute",
+     "highlights": ["Persönlicher Service für VIP- und Firmengäste in mehreren privaten Skyboxen bei Großveranstaltungen", "Zubereitung hochwertiger Spirituosen, Champagner und Craft-Cocktails nach strengen Servicestandards"]},
+    {"role": "Firmen-Englischlehrer (Minijob)", "company": "Sprachschule Aktiv", "city": "Bremen", "from": "2023-06", "to": "heute",
+     "highlights": ["Business-Englisch für Mitarbeitende der Thyssenkrupp Automation Engineering GmbH und der Wiethe Content GmbH"]},
+    {"role": "Werkstudent, Barservice", "company": "Café & Bar Celona", "city": "Bremen", "from": "2023-11", "to": "2025-08",
+     "highlights": ["Schnelle, präzise Getränkezubereitung in Stoßzeiten", "Aufbau von Kundenbeziehungen zur Förderung von Wiederbesuchen"]},
+    {"role": "Werkstudent", "company": "ZAG (Kunde: THIMM Group)", "city": "Bremen", "from": "2022-06", "to": "2023-01", "highlights": []},
+    {"role": "Logistik, Disposition", "company": "Grand-TexWest Motors of PA", "city": "Pennsylvania, USA", "from": "2019-08", "to": "2020-06",
+     "highlights": ["Planung und Koordination von Transporten in ganz Pennsylvania", "Sendungsverfolgung zur Sicherstellung pünktlicher Lieferungen", "Kundenbetreuung und Lösung logistischer Probleme"]}
+  ],
+  "education": [
+    {"school": "Constructor University", "city": "Bremen", "degree": "B.Sc. Elektro- und Computertechnik", "from": "2022-09", "to": "pausiert",
+     "courses": ["Allgemeine Elektrotechnik I & II (mit Labor)", "Klassische Physik (mit Labor)", "Einführung in Robotik & Intelligente Systeme (mit Labor)", "Einführung in die Informatik", "Analysis und Lineare Algebra I & II", "Programmierung in C/C++"]},
+    {"school": "Poltava National University", "city": "Ukraine", "degree": "B.Sc. Computertechnik", "from": "2019-11", "to": "2022-01",
+     "courses": ["Höhere Mathematik", "Physik", "Computerschaltungen", "Diskrete Strukturen", "Numerische Methoden"]},
+    {"school": "Anglican Grammar School", "city": "Delta State, Nigeria", "degree": "WAEC, naturwissenschaftlicher Schwerpunkt", "from": "2012-09", "to": "2018-06", "courses": []}
+  ],
+  "certificates": [
+    {"name": "Google Cybersecurity", "date": "2023-06", "topics": ["Netzwerksicherheit", "Kryptographie", "Risikomanagement", "Sicherheits-Governance", "Grundlagen Ethical Hacking"]},
+    {"name": "Python for Everybody", "issuer": "University of Michigan", "date": "2023-06", "topics": ["Dateiverarbeitung", "Web-Scraping", "SQL-Integration", "Datenvisualisierung", "Flask und Django"]},
+    {"name": "Oracle Database Foundations", "issuer": "LearnQuest", "date": "2023-07", "topics": ["SQL-Abfragen", "Datenbankdesign und Normalisierung", "Sicherung und Wiederherstellung", "Datenbanksicherheit", "Performance-Tuning"]}
+  ],
+  "projects": [
+    {"id": 1, "name": "CV-API", "description": "Diese Website: mein Lebenslauf als Live-REST-API mit anonymem Besucher-Dashboard.", "stack": ["Python", "FastAPI", "SQLite", "Docker"], "status": "live"}
+  ]
+}
