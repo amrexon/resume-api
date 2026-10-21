@@ -1,13 +1,39 @@
 <!DOCTYPE html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Impressum</title>
-<style>body{font:16px/1.6 system-ui,sans-serif;max-width:640px;margin:40px auto;padding:0 16px}</style></head>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impressum &amp; Datenschutz</title>
+<style>
+:root{--bg:#f6f7f9;--text:#14181f;--muted:#667085;--line:#e3e6eb;--accent:#2563eb}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1117;--text:#e6edf3;--muted:#8b949e;--line:#2a313c;--accent:#58a6ff}}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:680px;margin:0 auto;padding:32px 16px 48px}
+h1{font-size:26px;margin:0 0 4px}
+h2{font-size:18px;margin:32px 0 8px;padding-top:16px;border-top:1px solid var(--line)}
+p,li{margin:0 0 10px}
+.muted{color:var(--muted);font-size:14px}
+a{color:var(--accent)}
+</style>
+</head>
 <body>
+<main>
+<p><a href="/">← Zurück zum CV / Back to CV</a></p>
+
 <h1>Impressum</h1>
-<p>Angaben gemäß § 5 DDG</p>
-<p>Rexon O. Elebe<br>[Straße und Hausnummer – TODO]<br>[PLZ] Bremen</p>
-<p>E-Mail: [E-Mail – TODO]</p>
-<h2>Datenschutz</h2>
-<p>Diese Seite speichert keine IP-Adressen. Zugriffe auf die API werden nur anonym gezählt (gesalzener Hash, täglich wechselnd, ohne Rückschluss auf Personen). Es werden keine Cookies gesetzt.</p>
-<p><a href="/">Zurück</a></p>
-</body></html>
+<p class="muted">Angaben gemäß § 5 DDG</p>
+<p>Rexon O. Elebe<br>Herderstraße 62<br>28203 Bremen<br>Deutschland</p>
+<p>E-Mail: <a href="mailto:rexelebe@yahoo.com">rexelebe@yahoo.com</a></p>
+
+<h2>Datenschutzerklärung</h2>
+<p><strong>Verantwortlicher:</strong> Rexon O. Elebe, Anschrift wie oben.</p>
+<p><strong>Hosting:</strong> Diese Website läuft auf einem Server der Hetzner Online GmbH in Deutschland.</p>
+<p><strong>Was beim Besuch verarbeitet wird:</strong> Damit die Seite ausgeliefert werden kann, verarbeitet der Server technisch Ihre IP-Adresse. Die Anwendung speichert keine IP-Adressen. Für die Besucherstatistik werden pro Anfrage nur Zeitpunkt, aufgerufene Adresse, Statuscode, Antwortzeit und eine pseudonyme Kennung gespeichert. Diese Kennung ist ein gesalzener Hash, der sich täglich ändert.</p>
+<p><strong>Keine Cookies, kein Tracking:</strong> Es werden keine Cookies gesetzt und keine Analyse- oder Werbedienste Dritter eingebunden.</p>
+<p><strong>Verschlüsselung:</strong> Die Verbindung ist per HTTPS verschlüsselt (Zertifikat von Let's Encrypt).</p>
+<p><strong>Ihre Rechte:</strong> Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung sowie das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Kontakt: siehe oben.</p>
+
+<p class="muted">English summary: this is the legal notice required in Germany. The site sets no cookies, uses no third-party tracking, and does not store IP addresses.</p>
+</main>
+</body>
+</html>

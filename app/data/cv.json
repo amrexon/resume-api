@@ -4,7 +4,7 @@
     "title": "Aspiring IT specialist",
     "location": "Bremen, Germany",
     "seeking": "Ausbildung or entry-level role in IT",
-    "summary": "Fascinated by robotics, software development, cybersecurity, automation and machine learning. I keep learning, follow industry trends, and aim to build innovative, efficient solutions. This CV is itself a small backend project.",
+    "summary": "Fascinated by robotics, software development, cybersecurity, automation and machine learning. I keep learning, follow industry trends, and aim to build innovative, efficient solutions. This CV is itself a personal backend project.",
     "languages": [
       {"language": "English", "level": "Native"},
       {"language": "German", "level": "B1"}
