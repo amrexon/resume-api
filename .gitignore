@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 app/data/requests.db
 .env
+.DS_Store
+.DS_Store

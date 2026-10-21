@@ -2,26 +2,61 @@
 
 My CV as a live REST API, with an anonymous request dashboard.
 
-**Stack:** Python 3.12, FastAPI, SQLite, Docker
+**Live:** https://rexelebe.de · **API docs:** https://rexelebe.de/docs
+
+**Stack:** Python 3.12, FastAPI, SQLite, Docker, Caddy (automatic HTTPS), Ubuntu 26.04 on a Hetzner Cloud server
+
+## Architecture
+
+```
+Browser ──HTTPS──▶ Caddy (TLS via Let's Encrypt, ports 80/443)
+                      │
+                      ▼
+                 FastAPI app (port 8000, internal only)
+                      │
+                      ▼
+                 SQLite (Docker volume)
+```
+
+- **Caddy** terminates HTTPS, renews certificates automatically and redirects `www` and plain HTTP to `https://rexelebe.de`.
+- **FastAPI** serves the CV endpoints, the dashboard and auto-generated API docs.
+- **SQLite** stores an anonymous request log in a Docker volume, so stats survive restarts and redeploys.
+- A **Hetzner Cloud firewall** only allows SSH (22), HTTP (80) and HTTPS (443).
+
+## Endpoints
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/profile` | Name, summary, languages |
+| `GET /api/skills` | Technical skills |
+| `GET /api/experience` | Work experience |
+| `GET /api/education` | Education |
+| `GET /api/certificates` | Certificates |
+| `GET /api/projects` | Projects |
+| `GET /api/cv` | Everything at once |
+| `GET /api/status` | Health check |
+| `GET /api/stats` | Anonymous usage statistics |
+
+Try it: `curl https://rexelebe.de/api/skills`
+
+## Privacy
+
+No IP addresses are stored. Visitors are counted with a salted hash that changes every day, and no cookies are set.
 
 ## Run locally
+
 ```bash
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
-Open http://localhost:8000 (dashboard) and http://localhost:8000/docs (auto-generated API docs).
+Open http://localhost:8000 (dashboard) and http://localhost:8000/docs (API docs).
 
-## Run with Docker
+## Deploy (server)
+
 ```bash
-docker build -t cv-api .
-docker run -p 8000:8000 -v cvdata:/data -e VISITOR_SALT=some-long-random-string cv-api
+git clone https://github.com/amrexon/resume-api.git && cd resume-api
+docker volume create cvdata
+echo "VISITOR_SALT=$(openssl rand -hex 32)" > .env
+docker compose up -d --build
 ```
-
-## Endpoints
-`/api/profile`, `/api/skills`, `/api/experience`, `/api/education`, `/api/certificates`, `/api/projects`, `/api/cv`, `/api/status`, `/api/stats`
-
-## How it works
-- CV content lives in `app/data/cv.json`; each endpoint returns one section.
-- A middleware logs every `/api/` request (path, status, response time) to SQLite.
-- Visitors are anonymized: a salted hash that changes daily. No IP addresses are stored.
-- `/api/stats` aggregates the log for the dashboard (requests per hour, average response time, unique visitors).
+To update after a change: `git pull && docker compose up -d --build`

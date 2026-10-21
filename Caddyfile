@@ -1,0 +1,7 @@
+rexelebe.de {
+    reverse_proxy app:8000
+}
+
+www.rexelebe.de {
+    redir https://rexelebe.de{uri} permanent
+}
