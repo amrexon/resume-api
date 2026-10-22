@@ -58,7 +58,7 @@ async def log_requests(request: Request, call_next):
     path = request.url.path
     if path.startswith("/api/") and path != "/api/stats":
         ms = (time.perf_counter() - start) * 1000
-        # Anonymous visitor id: salted hash that changes every day, raw IP is never stored
+        # Requested dashboard statistic: salted hash that changes every day, raw IP is never stored
         ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "")
         ip = ip.split(",")[0].strip()
         ua = request.headers.get("user-agent", "")

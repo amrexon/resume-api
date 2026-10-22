@@ -42,6 +42,6 @@
     {"name": "Oracle Database Foundations", "issuer": "LearnQuest", "date": "2023-07", "topics": ["SQL queries", "Database design and normalization", "Backup and recovery", "Database security", "Performance tuning"]}
   ],
   "projects": [
-    {"id": 1, "name": "CV API", "description": "This site: my CV served as a live REST API with an anonymous request dashboard.", "stack": ["Python", "FastAPI", "SQLite", "Docker"], "status": "live"}
+    {"id": 1, "name": "CV API", "description": "This site: my CV served as a live REST API with with a request statistics dashboard.", "stack": ["Python", "FastAPI", "SQLite", "Docker"], "status": "live"}
   ]
 }
