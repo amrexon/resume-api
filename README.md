@@ -1,6 +1,6 @@
 # CV API
 
-My CV as a live REST API, with an anonymous request dashboard.
+My CV as a live REST API, with a request statistics dashboard.
 
 **Live:** https://rexelebe.de · **API docs:** https://rexelebe.de/docs
 
@@ -20,7 +20,7 @@ Browser ──HTTPS──▶ Caddy (TLS via Let's Encrypt, ports 80/443)
 
 - **Caddy** terminates HTTPS, renews certificates automatically and redirects `www` and plain HTTP to `https://rexelebe.de`.
 - **FastAPI** serves the CV endpoints in English and German (`cv.json`, `cv.de.json`), the dashboard and auto-generated API docs.
-- **SQLite** stores an anonymous request log in a Docker volume, so stats survive restarts and redeploys.
+- **SQLite** stores a pseudonymous request log in a Docker volume, so stats survive restarts and redeploys.
 - A **Hetzner Cloud firewall** only allows SSH (22), HTTP (80) and HTTPS (443).
 
 ## Endpoints

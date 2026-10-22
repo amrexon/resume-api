@@ -12,7 +12,7 @@
     "contact_email": "rexelebe@yahoo.com"
   },
   "skills": {
-    "programming": ["C/C/C++", "Python", "JavaScript", "HTML/CSS", "Haskell", "MATLAB Bash(Grundlagen)"],
+    "programming": ["C/C/C++", "Python", "JavaScript", "HTML/CSS", "Haskell", "MATLAB", "Bash (basics)"],
     "databases": ["SQL (Oracle)", "SQLite", "Datenbankdesign und Normalisierung"],
     "tools": ["Git", "GitHub", "Docker", "Docker Compose", "Linux (Ubuntu)", "SSH", "VS Code", "Microsoft Office", "Microsoft Project"],
     "web and APIs": ["REST APIs", "FastAPI", "JSON", "Caddy (Reverse Proxy, HTTPS)"],
@@ -42,6 +42,6 @@
     {"name": "Oracle Database Foundations", "issuer": "LearnQuest", "date": "2023-07", "topics": ["SQL-Abfragen", "Datenbankdesign und Normalisierung", "Sicherung und Wiederherstellung", "Datenbanksicherheit", "Performance-Tuning"]}
   ],
   "projects": [
-    {"id": 1, "name": "CV-API", "description": "Diese Website: mein Lebenslauf als Live-REST-API mit anonymem Besucher-Dashboard.", "stack": ["Python", "FastAPI", "SQLite", "Docker"], "status": "live"}
+    {"id": 1, "name": "CV-API", "description": "Diese Website: mein Lebenslauf als Live-REST-API mit Dashboard für Zugriffsstatistiken.", "stack": ["Python", "FastAPI", "SQLite", "Docker"], "status": "live"}
   ]
 }

@@ -29,7 +29,7 @@ STARTED = time.time()
 
 app = FastAPI(
     title="Rexon Elebe – CV API",
-    description="My CV as a live REST API. Visitors are counted anonymously (hashed, no IP addresses stored).",
+    description="My CV as a live REST API. Visitor statistics store no IP addresses, only a pseudonymous ID that changes daily.	).",
     version="1.0.0",
 )
 
@@ -94,7 +94,7 @@ def status():
     return {"status": "ok", "database": "connected", "uptime_seconds": int(time.time() - STARTED), "version": app.version}
 
 
-@app.get("/api/stats", tags=["System"], summary="Anonymous usage statistics")
+@app.get("/api/stats", tags=["System"], summary="Usage statistics (pseudonymous)")
 def stats():
     now = dt.datetime.utcnow()
     day_ago = (now - dt.timedelta(hours=24)).isoformat(timespec="seconds")

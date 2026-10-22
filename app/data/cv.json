@@ -12,7 +12,7 @@
     "contact_email": "rexelebe@yahoo.com"
   },
   "skills": {
-    "programming": ["Python", "C/C++", "JavaScript", "HTML/CSS", "Haskell", "MATLAB Bash(Basics)"],
+    "programming": ["Python", "C/C++", "JavaScript", "HTML/CSS", "Haskell", "MATLAB", "Bash (basics)"],
     "databases": ["SQL (Oracle)", "SQLite", "Database design and normalization"],
     "tools": ["Linux(Ubuntu)", "Git", "GitHub", "Docker", "Docker compose", "SSH", "SSH", "VS Code", "Microsoft Office", "Microsoft Project"],
     "web and APIs": ["REST APIs", "FastAPI", "JSON", "Caddy(reverse proxy, HTTPS)"],
