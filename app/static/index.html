@@ -184,7 +184,7 @@ function loadStats(){
 }
 function loadProfile(){
   fetch(withLang("/api/profile")).then(function(r){return r.json()}).then(function(p){
-    $("name").textContent=p.name;$("title").textContent=p.title+" · "+p.location;$("summary").textContent=p.summary;
+    $("name").textContent=p.name;$("title").textContent=p.title+" · "+p.location;$("intro").textContent=p.intro;
   }).catch(function(){});
 }
 function applyLang(){

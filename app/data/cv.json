@@ -4,7 +4,7 @@
     "title": "Aspiring IT specialist",
     "location": "Bremen, Germany",
     "seeking": "Ausbildung or entry-level role in IT",
-    "summary": "Fascinated by robotics, software development, cybersecurity, automation and machine learning. I keep learning, follow industry trends, and aim to build innovative, efficient solutions. This CV is itself a personal backend project.",
+    "intro": "I'm looking for an entry-level IT role or an Ausbildung starting in 2027. I run this site as a backend practice project: a FastAPI API serves my CV as JSON and records basic request statistics. My studies covered computer science, robotics, C/C++ and MATLAB, and I'm now building on that with hands-on projects.",
     "languages": [
       {"language": "English", "level": "Native"},
       {"language": "German", "level": "B1"}
