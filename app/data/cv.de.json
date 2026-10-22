@@ -3,8 +3,8 @@
     "name": "Rexon O. Elebe",
     "title": "Angehender IT-Spezialist",
     "location": "Bremen, Deutschland",
-    "seeking": "Ausbildung oder Einstiegsposition in der IT",
-    "summary": "Ich interessiere mich für Stellen in den Bereichen Cloud-Architektur und -Entwicklung, Robotik, Softwareentwicklung, Cybersicherheit, Data Engineering und Big Data, Automatisierung in der Luftfahrt sowie\nMaschinelles Lernen. Ich bilde mich ständig weiter, halte mich über Branchentrends auf dem Laufenden und strebe danach, innovative und effiziente Lösungen zu entwickeln. Dieser Lebenslauf ist selbst ein kleines Backend-Projekt.",
+    "seeking": "Ausbildung und Einstiegsposition in der IT",
+    "summary": "Ich interessiere mich für Stellen in den Bereichen Cloud-Architektur und Entwicklung, Robotik, Softwareentwicklung, Cybersicherheit, Data Engineering und Big Data, Automatisierung in der Luftfahrt sowie\nMaschinelles Lernen. Ich bilde mich ständig weiter, halte mich über Branchentrends auf dem Laufenden und strebe danach, innovative und effiziente Lösungen zu entwickeln. Dieser Lebenslauf ist selbst ein kleines Backend-Projekt.",
     "languages": [
       {"language": "Englisch", "level": "Muttersprache"},
       {"language": "Deutsch", "level": "B1 - Gute Kenntnisse / Arbeitskenntnisse"}
@@ -12,13 +12,14 @@
     "contact_email": "rexelebe@yahoo.com"
   },
   "skills": {
-    "programming": ["C/C++", "Python", "JavaScript", "CSS", "MATLAB"],
-    "databases": ["SQL (Oracle)"],
-    "tools": ["Microsoft Office", "Microsoft Project"],
-    "focus_areas": ["Cybersicherheit", "Robotik", "Automatisierung", "Maschinelles Lernen"]
+    "programming": ["C/C/C++", "Python", "JavaScript", "HTML/CSS", "Haskell", "MATLAB Bash(Grundlagen)"],
+    "databases": ["SQL (Oracle)", "SQLite", "Datenbankdesign und Normalisierung"],
+    "tools": ["Git", "GitHub", "Docker", "Docker Compose", "Linux (Ubuntu)", "SSH", "VS Code", "Microsoft Office", "Microsoft Project"],
+    "web and APIs": ["REST APIs", "FastAPI", "JSON", "Caddy (Reverse Proxy, HTTPS)"],
+    "focus_areas": ["Cloud-Architektur und Entwicklung", "Cybersicherheit", "Softwareentwicklung", "Robotik", "Automatisierung in der Luftfahrt", "Maschinelles Lernen"]
   },
   "experience": [
-    {"role": "Barkeeper, VIP-Lounge / Skybox", "company": "Weserstadion", "city": "Bremen", "from": "2025-11", "to": "heute",
+    {"role": "Barkeeper, VIP-Lounge / Skybox", "company": "Supreme Sports and Hospitality| Weserstadion", "city": "Bremen", "from": "2025-11", "to": "heute",
      "highlights": ["Persönlicher Service für VIP- und Firmengäste in mehreren privaten Skyboxen bei Großveranstaltungen", "Zubereitung hochwertiger Spirituosen, Champagner und Craft-Cocktails nach strengen Servicestandards"]},
     {"role": "Firmen-Englischlehrer (Minijob)", "company": "Sprachschule Aktiv", "city": "Bremen", "from": "2023-06", "to": "heute",
      "highlights": ["Business-Englisch für Mitarbeitende der Thyssenkrupp Automation Engineering GmbH und der Wiethe Content GmbH"]},

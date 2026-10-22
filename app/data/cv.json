@@ -3,7 +3,7 @@
     "name": "Rexon O. Elebe",
     "title": "Aspiring IT specialist",
     "location": "Bremen, Germany",
-    "seeking": "Ausbildung or entry-level role in IT",
+    "seeking": "Ausbildung & Entry-level roles in IT",
     "summary": "I'm interested in positions in Cloud Architecture & Engineering, Robotics, Software Development, Cybersecurity, Data Engineering & Big Data, Automation in Aviation,\nand Machine Learning. I'm constantly learning, keeping up with industry trends, and aim to build innovative, efficient solutions. This CV is itself a small backend project.",
     "languages": [
       {"language": "English", "level": "Native"},
@@ -12,13 +12,14 @@
     "contact_email": "rexelebe@yahoo.com"
   },
   "skills": {
-    "programming": ["C/C++", "Python", "JavaScript", "CSS", "MATLAB"],
-    "databases": ["SQL (Oracle)"],
-    "tools": ["Microsoft Office", "Microsoft Project"],
-    "focus_areas": ["Cybersecurity", "Robotics", "Automation", "Machine learning"]
+    "programming": ["Python", "C/C++", "JavaScript", "HTML/CSS", "Haskell", "MATLAB Bash(Basics)"],
+    "databases": ["SQL (Oracle)", "SQLite", "Database design and normalization"],
+    "tools": ["Linux(Ubuntu)", "Git", "GitHub", "Docker", "Docker compose", "SSH", "SSH", "VS Code", "Microsoft Office", "Microsoft Project"],
+    "web and APIs": ["REST APIs", "FastAPI", "JSON", "Caddy(reverse proxy, HTTPS)"],
+    "focus_areas": ["Cloud Architecture & Engineering", "Cybersecurity", "Software Development", "Robotics", "Automation in Aviation", "Machine Learning"]
   },
   "experience": [
-    {"role": "Bartender, VIP Lounge / Skybox", "company": "Weserstadion", "city": "Bremen", "from": "2025-11", "to": "present",
+    {"role": "Bartender, VIP Lounge / Skybox", "company": "Supreme Sports and Hospitality|Weserstadion", "city": "Bremen", "from": "2025-11", "to": "present",
      "highlights": ["Personal service for VIP and corporate guests across several private skyboxes at large events", "Prepared premium spirits, champagne and craft cocktails to strict service standards"]},
     {"role": "Corporate English teacher (Minijob)", "company": "Sprachschule Aktiv", "city": "Bremen", "from": "2023-06", "to": "present",
      "highlights": ["Business English for employees of Thyssenkrupp Automation Engineering GmbH and Wiethe Content GmbH"]},
