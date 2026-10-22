@@ -1,216 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Rexon Elebe – CV API</title>
-<style>
-:root{--bg:#f6f7f9;--card:#fff;--text:#14181f;--muted:#667085;--line:#e3e6eb;--accent:#2563eb;--ok:#16a34a;--code:#0f172a;--codet:#d6e2ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1117;--card:#161b22;--text:#e6edf3;--muted:#8b949e;--line:#2a313c;--accent:#58a6ff;--ok:#3fb950;--code:#0a0e14;--codet:#c9d7ee}}
-:root[data-theme="dark"]{--bg:#0d1117;--card:#161b22;--text:#e6edf3;--muted:#8b949e;--line:#2a313c;--accent:#58a6ff;--ok:#3fb950;--code:#0a0e14;--codet:#c9d7ee}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
-.wrap{max-width:1000px;margin:0 auto;padding:20px 16px 40px}
-.hero{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-.hero img{width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:3px solid var(--line)}
-.hero h1{font-size:24px;margin:0}
-.tag{color:var(--accent);font-weight:600;margin:2px 0}
-.hero p{margin:4px 0 0;color:var(--muted);max-width:620px}
-.links{margin:12px 0 18px;display:flex;gap:10px;flex-wrap:wrap}
-.links a{font-size:13px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--text);text-decoration:none;background:var(--card)}
-.links a:hover{border-color:var(--accent)}
-.badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ok);font-weight:600}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:p 2s infinite}
-@keyframes p{50%{opacity:.3}}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
-.stat b{display:block;font-size:24px}
-.stat span{font-size:12px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:1fr 1.3fr;gap:16px;margin-bottom:16px}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
-h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 10px}
-.ep{display:flex;gap:8px;align-items:center;width:100%;text-align:left;background:none;border:1px solid var(--line);color:var(--text);padding:9px 10px;border-radius:8px;margin-bottom:8px;cursor:pointer;font:inherit}
-.ep:hover,.ep.on{border-color:var(--accent)}
-.get{font:700 11px ui-monospace,monospace;color:var(--ok)}
-.path{font-family:ui-monospace,Menlo,monospace;font-size:13px}
-pre{margin:0;background:var(--code);color:var(--codet);padding:14px;border-radius:10px;overflow:auto;max-height:330px;font:12.5px/1.55 ui-monospace,Menlo,monospace;min-height:210px}
-.meta{display:flex;gap:12px;font-size:12px;color:var(--muted);margin-top:8px;flex-wrap:wrap}
-.meta b{color:var(--ok)}
-.chart{display:flex;align-items:flex-end;gap:3px;height:90px}
-.chart i{flex:1;background:var(--accent);border-radius:3px 3px 0 0;opacity:.85;min-height:3px}
-.axis{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px}
-.scroll{overflow-x:auto}
-.log{width:100%;border-collapse:collapse;font:12px ui-monospace,Menlo,monospace}
-.log td{padding:5px 6px;border-top:1px solid var(--line);white-space:nowrap}
-.log td:first-child{color:var(--muted)}
-.note{font-size:12px;color:var(--muted)}
-.note a{color:var(--muted)}
-code{font-family:ui-monospace,monospace;background:var(--line);padding:1px 6px;border-radius:4px;font-size:12px}
-.top{display:flex;justify-content:flex-end;margin-bottom:8px}
-.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
-.lang button{border:0;background:none;color:var(--muted);font:600 12px system-ui,-apple-system,sans-serif;padding:6px 14px;cursor:pointer;min-width:44px;min-height:32px}
-.lang button[aria-pressed="true"]{background:var(--accent);color:var(--bg)}
-.lang button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Rexon Elebe – CV API</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --card: #fff;
+      --text: #14181f;
+      --muted: #667085;
+      --line: #e3e6eb;
+      --accent: #2563eb;
+      --ok: #16a34a;
+      --code: #0f172a;
+      --codet: #d6e2ff;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    @media (prefers-color-scheme:dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0d1117;
+        --card: #161b22;
+        --text: #e6edf3;
+        --muted: #8b949e;
+        --line: #2a313c;
+        --accent: #58a6ff;
+        --ok: #3fb950;
+        --code: #0a0e14;
+        --codet: #c9d7ee
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0d1117;
+      --card: #161b22;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --line: #2a313c;
+      --accent: #58a6ff;
+      --ok: #3fb950;
+      --code: #0a0e14;
+      --codet: #c9d7ee
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif
+    }
+
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 16px 40px
+    }
+
+    .hero {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap
+    }
+
+    .hero img {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 20%;
+      border: 3px solid var(--line)
+    }
+
+    .hero h1 {
+      font-size: 24px;
+      margin: 0
+    }
+
+    .tag {
+      color: var(--accent);
+      font-weight: 600;
+      margin: 2px 0
+    }
+
+    .hero p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      max-width: 620px
+    }
+
+    .links {
+      margin: 12px 0 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .links a {
+      font-size: 13px;
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      text-decoration: none;
+      background: var(--card)
+    }
+
+    .links a:hover {
+      border-color: var(--accent)
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--ok);
+      font-weight: 600
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+      animation: p 2s infinite
+    }
+
+    @keyframes p {
+      50% {
+        opacity: .3
+      }
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px
+    }
+
+    .stat b {
+      display: block;
+      font-size: 24px
+    }
+
+    .stat span {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 16px;
+      margin-bottom: 16px
+    }
+
+    @media(max-width:760px) {
+      .grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    h2 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin: 0 0 10px
+    }
+
+    .ep {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 9px 10px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      font: inherit
+    }
+
+    .ep:hover,
+    .ep.on {
+      border-color: var(--accent)
+    }
+
+    .get {
+      font: 700 11px ui-monospace, monospace;
+      color: var(--ok)
+    }
+
+    .path {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 13px
+    }
+
+    pre {
+      margin: 0;
+      background: var(--code);
+      color: var(--codet);
+      padding: 14px;
+      border-radius: 10px;
+      overflow: auto;
+      max-height: 330px;
+      font: 12.5px/1.55 ui-monospace, Menlo, monospace;
+      min-height: 210px
+    }
+
+    .meta {
+      display: flex;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      flex-wrap: wrap
+    }
+
+    .meta b {
+      color: var(--ok)
+    }
+
+    .chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 90px
+    }
+
+    .chart i {
+      flex: 1;
+      background: var(--accent);
+      border-radius: 3px 3px 0 0;
+      opacity: .85;
+      min-height: 3px
+    }
+
+    .axis {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px
+    }
+
+    .scroll {
+      overflow-x: auto
+    }
+
+    .log {
+      width: 100%;
+      border-collapse: collapse;
+      font: 12px ui-monospace, Menlo, monospace
+    }
+
+    .log td {
+      padding: 5px 6px;
+      border-top: 1px solid var(--line);
+      white-space: nowrap
+    }
+
+    .log td:first-child {
+      color: var(--muted)
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .note a {
+      color: var(--muted)
+    }
+
+    code {
+      font-family: ui-monospace, monospace;
+      background: var(--line);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 12px
+    }
+
+    .top {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8px
+    }
+
+    .lang {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--card)
+    }
+
+    .lang button {
+      border: 0;
+      background: none;
+      color: var(--muted);
+      font: 600 12px system-ui, -apple-system, sans-serif;
+      padding: 6px 14px;
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 32px
+    }
+
+    .lang button[aria-pressed="true"] {
+      background: var(--accent);
+      color: var(--bg)
+    }
+
+    .lang button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px
+    }
+  </style>
 </head>
+
 <body>
-<div class="wrap">
-<div class="top">
-<div class="lang" role="group" aria-label="Language / Sprache">
-<button type="button" data-lang="en" aria-pressed="true">EN</button>
-<button type="button" data-lang="de" aria-pressed="false">DE</button>
-</div>
-</div>
-<div class="hero">
-<img id="photo" src="/static/photo.jpg" alt="Portrait of Rexon Elebe">
-<div>
-<h1 id="name">Rexon O. Elebe</h1>
-<div class="tag" id="title"></div>
-<p id="summary" data-i18n="intro"></p>
-</div>
-</div>
-<div class="links">
-<a href="/docs" data-i18n="docs">API documentation</a>
-<a href="/api/cv" id="full" data-i18n="full">Full CV as JSON</a>
-<span class="badge"><span class="dot"></span><span id="up">API online</span></span>
-</div>
+  <div class="wrap">
+    <div class="top">
+      <div class="lang" role="group" aria-label="Language / Sprache">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="de" aria-pressed="false">DE</button>
+      </div>
+    </div>
+    <div class="hero">
+      <img id="photo" src="/static/photo.jpg" alt="Portrait of Rexon Elebe">
+      <div>
+        <h1 id="name">Rexon O. Elebe</h1>
+        <div class="tag" id="title"></div>
+        <p id="summary" data-i18n="intro"></p>
+      </div>
+    </div>
+    <div class="links">
+      <a href="/docs" data-i18n="docs">API documentation</a>
+      <a href="/api/cv" id="full" data-i18n="full">Full CV as JSON</a>
+      <span class="badge"><span class="dot"></span><span id="up">API online</span></span>
+    </div>
 
-<div class="stats">
-<div class="card stat"><b id="s1">–</b><span data-i18n="s1">Requests (24 h)</span></div>
-<div class="card stat"><b id="s2">–</b><span data-i18n="s2">Total requests</span></div>
-<div class="card stat"><b id="s3">–</b><span data-i18n="s3">Avg. response time</span></div>
-<div class="card stat"><b id="s4">–</b><span data-i18n="s4">Visitors (7 days)</span></div>
-</div>
 
-<div class="grid">
-<div class="card">
-<h2 data-i18n="try">Try the API</h2>
-<div id="eps"></div>
-<p class="note"><span data-i18n="term">Or in a terminal:</span> <code id="curl">curl https://rexelebe.de/api/skills</code></p>
-</div>
-<div class="card">
-<h2 data-i18n="resp">Live response</h2>
-<pre id="out">Click an endpoint…</pre>
-<div class="meta" id="meta"></div>
-</div>
-</div>
 
-<div class="grid">
-<div class="card">
-<h2 data-i18n="perhour">Requests per hour (last 24 h)</h2>
-<div class="chart" id="chart"></div>
-<div class="axis"><span data-i18n="ago">24 h ago</span><span>12 h</span><span data-i18n="now">now</span></div>
-</div>
-<div class="card">
-<h2 data-i18n="latest">Latest requests</h2>
-<div class="scroll"><table class="log"><tbody id="log"></tbody></table></div>
-</div>
-</div>
+    <div class="grid">
+      <div class="card">
+        <h2 data-i18n="try">Try the API</h2>
+        <div id="eps"></div>
+        <p class="note"><span data-i18n="term">Or in a terminal:</span> <code
+            id="curl">curl https://rexelebe.de/api/skills</code></p>
+      </div>
+      <div class="card">
+        <h2 data-i18n="resp">Live response</h2>
+        <pre id="out">Click an endpoint…</pre>
+        <div class="meta" id="meta"></div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="card stat"><b id="s1">–</b><span data-i18n="s1">Requests (24 h)</span></div>
+      <div class="card stat"><b id="s2">–</b><span data-i18n="s2">Total requests</span></div>
+      <div class="card stat"><b id="s3">–</b><span data-i18n="s3">Avg. response time</span></div>
+      <div class="card stat"><b id="s4">–</b><span data-i18n="s4">Visitors (7 days)</span></div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h2 data-i18n="perhour">Requests per hour (last 24 h)</h2>
+        <div class="chart" id="chart"></div>
+        <div class="axis"><span data-i18n="ago">24 h ago</span><span>12 h</span><span data-i18n="now">now</span></div>
+      </div>
+      <div class="card">
+        <h2 data-i18n="latest">Latest requests</h2>
+        <div class="scroll">
+          <table class="log">
+            <tbody id="log"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-<p class="note"><span data-i18n="footer">Built with Python, FastAPI, SQLite and Docker. Visitors are counted anonymously: no IP addresses are stored.</span> · <a href="/impressum">Impressum</a></p>
-</div>
-<script>
-var $=function(id){return document.getElementById(id)};
-var T={
-  en:{intro:"I'm looking for an entry-level IT role and an Ausbildung starting in 2027. I run this site as a backend practice project: a FastAPI API serves my CV as JSON and records basic request statistics. My studies covered Computer Engineering, Robotics, C/C++, and I hold certificates in Python, SQL databases and Cybersecurity.I'm now building on that with hands-on projects.",
-      docs:"API documentation",full:"Full CV as JSON",online:"API online",up:"up",s1:"Requests (24 h)",s2:"Total requests",s3:"Avg. response time",s4:"Visitors (7 days)",try:"Try the API",term:"Or in a terminal:",resp:"Live response",click:"Click an endpoint…",sending:"Sending request…",failed:"Request failed.",time:"Time",perhour:"Requests per hour (last 24 h)",ago:"24 h ago",now:"now",latest:"Latest requests",requests:"requests",photo:"Portrait of Rexon Elebe",footer:"Built with Python, FastAPI, SQLite and Docker. Visitors are counted anonymously: no IP addresses are stored.",locale:"en-US"},
-  de:{intro:"Ich suche eine Einstiegsposition in der IT und eine Ausbildung ab 2027. Diese Website betreibe ich als Backend-Übungsprojekt: Eine FastAPI-API liefert meinen Lebenslauf als JSON und erfasst einfache Zugriffsstatistiken. Im Studium habe ich mich mit Computertechnik, Robotik und C/C++ beschäftigt, und ich habe Zertifikate in Python, SQL-Datenbanken und Cybersicherheit. Jetzt baue ich darauf mit praktischen Projekten auf.",
-      docs:"API-Dokumentation",full:"Gesamter Lebenslauf als JSON",online:"API online",up:"läuft seit",s1:"Anfragen (24 h)",s2:"Anfragen gesamt",s3:"Ø Antwortzeit",s4:"Besucher (7 Tage)",try:"API ausprobieren",term:"Oder im Terminal:",resp:"Live-Antwort",click:"Klicke auf einen Endpunkt…",sending:"Anfrage wird gesendet…",failed:"Anfrage fehlgeschlagen.",time:"Zeit",perhour:"Anfragen pro Stunde (letzte 24 h)",ago:"vor 24 h",now:"jetzt",latest:"Letzte Anfragen",requests:"Anfragen",photo:"Porträt von Rexon Elebe",footer:"Gebaut mit Python, FastAPI, SQLite und Docker. Besucher werden anonym gezählt: Es werden keine IP-Adressen gespeichert.",locale:"de-DE"}
-};
-// CV endpoints accept ?lang=de; /api/status has no language
-var EPS=["/api/profile","/api/skills","/api/experience","/api/education","/api/certificates","/api/projects","/api/status"];
-var LANGUAGED=function(p){return p!=="/api/status"};
-function initialLang(){
-  var q=new URLSearchParams(location.search).get("lang");
-  if(q==="en"||q==="de")return q;
-  try{var s=localStorage.getItem("lang");if(s==="en"||s==="de")return s}catch(e){}
-  return "en";
-}
-var LANG=initialLang(),current=null,lastStats=null;
-function t(k){return T[LANG][k]}
-function withLang(p){return LANG==="de"&&LANGUAGED(p)?p+"?lang=de":p}
-function buildEndpoints(){
-  var box=$("eps");box.textContent="";
-  EPS.forEach(function(p){
-    var b=document.createElement("button");b.className="ep";b.type="button";
-    var g=document.createElement("span");g.className="get";g.textContent="GET";
-    var s=document.createElement("span");s.className="path";s.textContent=withLang(p);
-    b.appendChild(g);b.appendChild(s);
-    if(p===current)b.classList.add("on");
-    b.onclick=function(){send(p,b)};
-    box.appendChild(b);
-  });
-}
-function send(p,btn){
-  current=p;
-  document.querySelectorAll(".ep").forEach(function(e){e.classList.remove("on")});
-  if(btn)btn.classList.add("on");
-  $("out").textContent=t("sending");
-  var start=performance.now();
-  fetch(withLang(p)).then(function(r){
-    return r.json().then(function(j){
-      var ms=Math.round(performance.now()-start);
-      $("out").textContent=JSON.stringify(j,null,2);
-      var m=$("meta");m.textContent="";
-      [["Status "+r.status+" "+(r.ok?"OK":"Error"),true],[t("time")+" "+ms+" ms",false],["application/json",false]].forEach(function(x){
-        var sp=document.createElement("span");
-        if(x[1]){var bb=document.createElement("b");bb.textContent=x[0];sp.appendChild(bb)}else{sp.textContent=x[0]}
-        m.appendChild(sp);
+    <p class="note"><span data-i18n="footer">Built with Python, FastAPI, SQLite and Docker. Visitors are counted
+        anonymously: no IP addresses are stored.</span> · <a href="/impressum">Impressum</a></p>
+  </div>
+  <script>
+    var $ = function (id) { return document.getElementById(id) };
+    var T = {
+      en: {
+        intro: "I'm looking for an entry-level IT role and an Ausbildung starting in 2027. I run this site as a backend practice project: a FastAPI API serves my CV as JSON and records basic request statistics. My studies covered Computer Engineering, Robotics, C/C++, and I hold certificates in Python, SQL databases and Cybersecurity.I'm now building on that with hands-on projects.",
+        docs: "API documentation", full: "Full CV as JSON", online: "API online", up: "up", s1: "Requests (24 h)", s2: "Total requests", s3: "Avg. response time", s4: "Visitors (7 days)", try: "Try the API", term: "Or in a terminal:", resp: "Live response", click: "Click an endpoint…", sending: "Sending request…", failed: "Request failed.", time: "Time", perhour: "Requests per hour (last 24 h)", ago: "24 h ago", now: "now", latest: "Latest requests", requests: "requests", photo: "Portrait of Rexon Elebe", footer: "Built with Python, FastAPI, SQLite and Docker. Visitors are counted anonymously: no IP addresses are stored.", locale: "en-US"
+      },
+      de: {
+        intro: "Ich suche eine Einstiegsposition in der IT und eine Ausbildung ab 2027. Diese Website betreibe ich als Backend-Übungsprojekt: Eine FastAPI-API liefert meinen Lebenslauf als JSON und erfasst einfache Zugriffsstatistiken. Im Studium habe ich mich mit Computertechnik, Robotik und C/C++ beschäftigt, und ich habe Zertifikate in Python, SQL-Datenbanken und Cybersicherheit. Jetzt baue ich darauf mit praktischen Projekten auf.",
+        docs: "API-Dokumentation", full: "Gesamter Lebenslauf als JSON", online: "API online", up: "läuft seit", s1: "Anfragen (24 h)", s2: "Anfragen gesamt", s3: "Ø Antwortzeit", s4: "Besucher (7 Tage)", try: "API ausprobieren", term: "Oder im Terminal:", resp: "Live-Antwort", click: "Klicke auf einen Endpunkt…", sending: "Anfrage wird gesendet…", failed: "Anfrage fehlgeschlagen.", time: "Zeit", perhour: "Anfragen pro Stunde (letzte 24 h)", ago: "vor 24 h", now: "jetzt", latest: "Letzte Anfragen", requests: "Anfragen", photo: "Porträt von Rexon Elebe", footer: "Gebaut mit Python, FastAPI, SQLite und Docker. Besucher werden anonym gezählt: Es werden keine IP-Adressen gespeichert.", locale: "de-DE"
+      }
+    };
+    // CV endpoints accept ?lang=de; /api/status has no language
+    var EPS = ["/api/profile", "/api/skills", "/api/experience", "/api/education", "/api/certificates", "/api/projects", "/api/status"];
+    var LANGUAGED = function (p) { return p !== "/api/status" };
+    function initialLang() {
+      var q = new URLSearchParams(location.search).get("lang");
+      if (q === "en" || q === "de") return q;
+      try { var s = localStorage.getItem("lang"); if (s === "en" || s === "de") return s } catch (e) { }
+      return "en";
+    }
+    var LANG = initialLang(), current = null, lastStats = null;
+    function t(k) { return T[LANG][k] }
+    function withLang(p) { return LANG === "de" && LANGUAGED(p) ? p + "?lang=de" : p }
+    function buildEndpoints() {
+      var box = $("eps"); box.textContent = "";
+      EPS.forEach(function (p) {
+        var b = document.createElement("button"); b.className = "ep"; b.type = "button";
+        var g = document.createElement("span"); g.className = "get"; g.textContent = "GET";
+        var s = document.createElement("span"); s.className = "path"; s.textContent = withLang(p);
+        b.appendChild(g); b.appendChild(s);
+        if (p === current) b.classList.add("on");
+        b.onclick = function () { send(p, b) };
+        box.appendChild(b);
       });
-      setTimeout(loadStats,400);
-    });
-  }).catch(function(){$("out").textContent=t("failed")});
-}
-function fmtUp(s){var d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);return d?d+"d "+h+"h":h?h+"h "+m+"m":m+"m"}
-function renderStats(s){
-  var loc=t("locale");
-  $("s1").textContent=s.last_24h.toLocaleString(loc);
-  $("s2").textContent=s.total.toLocaleString(loc);
-  $("s3").textContent=Math.round(s.avg_ms)+" ms";
-  $("s4").textContent=s.visitors_7d.toLocaleString(loc);
-  $("up").textContent=t("online")+" · "+t("up")+" "+fmtUp(s.uptime_seconds);
-  var max=Math.max.apply(null,s.hourly.concat([1]));
-  var ch=$("chart");ch.textContent="";
-  s.hourly.forEach(function(v){var i=document.createElement("i");i.style.height=Math.max(3,v/max*88)+"px";i.title=v+" "+t("requests");ch.appendChild(i)});
-  var lg=$("log");lg.textContent="";
-  s.recent.forEach(function(r){
-    var tr=document.createElement("tr");
-    [r.ts.slice(11,19)+" UTC",r.path,r.status,Math.round(r.ms)+" ms"].forEach(function(v){
-      var td=document.createElement("td");td.textContent=v;tr.appendChild(td);
-    });
-    lg.appendChild(tr);
-  });
-}
-function loadStats(){
-  fetch("/api/stats").then(function(r){return r.json()}).then(function(s){lastStats=s;renderStats(s)}).catch(function(){});
-}
-function loadProfile(){
-  fetch(withLang("/api/profile")).then(function(r){return r.json()}).then(function(p){
-    $("name").textContent=p.name;$("title").textContent=p.title+" · "+p.location;
-  }).catch(function(){});
-}
-function applyLang(){
-  document.documentElement.lang=LANG;
-  document.querySelectorAll("[data-i18n]").forEach(function(el){el.textContent=t(el.getAttribute("data-i18n"))});
-  document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-lang")===LANG))});
-  $("photo").alt=t("photo");
-  $("full").href=withLang("/api/cv");
-  $("curl").textContent="curl https://rexelebe.de"+withLang("/api/skills");
-  buildEndpoints();
-  loadProfile();
-  if(current){send(current,document.querySelector(".ep.on"))}else{$("out").textContent=t("click");$("meta").textContent=""}
-  if(lastStats)renderStats(lastStats);
-}
-function setLang(l){
-  if(l===LANG)return;
-  LANG=l;
-  try{localStorage.setItem("lang",l)}catch(e){}
-  try{var u=new URL(location.href);if(l==="de"){u.searchParams.set("lang","de")}else{u.searchParams.delete("lang")}history.replaceState(null,"",u)}catch(e){}
-  applyLang();
-}
-document.querySelectorAll(".lang button").forEach(function(b){b.onclick=function(){setLang(b.getAttribute("data-lang"))}});
-applyLang();
-loadStats();setInterval(loadStats,15000);
-</script>
+    }
+    function send(p, btn) {
+      current = p;
+      document.querySelectorAll(".ep").forEach(function (e) { e.classList.remove("on") });
+      if (btn) btn.classList.add("on");
+      $("out").textContent = t("sending");
+      var start = performance.now();
+      fetch(withLang(p)).then(function (r) {
+        return r.json().then(function (j) {
+          var ms = Math.round(performance.now() - start);
+          $("out").textContent = JSON.stringify(j, null, 2);
+          var m = $("meta"); m.textContent = "";
+          [["Status " + r.status + " " + (r.ok ? "OK" : "Error"), true], [t("time") + " " + ms + " ms", false], ["application/json", false]].forEach(function (x) {
+            var sp = document.createElement("span");
+            if (x[1]) { var bb = document.createElement("b"); bb.textContent = x[0]; sp.appendChild(bb) } else { sp.textContent = x[0] }
+            m.appendChild(sp);
+          });
+          setTimeout(loadStats, 400);
+        });
+      }).catch(function () { $("out").textContent = t("failed") });
+    }
+    function fmtUp(s) { var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60); return d ? d + "d " + h + "h" : h ? h + "h " + m + "m" : m + "m" }
+    function renderStats(s) {
+      var loc = t("locale");
+      $("s1").textContent = s.last_24h.toLocaleString(loc);
+      $("s2").textContent = s.total.toLocaleString(loc);
+      $("s3").textContent = Math.round(s.avg_ms) + " ms";
+      $("s4").textContent = s.visitors_7d.toLocaleString(loc);
+      $("up").textContent = t("online") + " · " + t("up") + " " + fmtUp(s.uptime_seconds);
+      var max = Math.max.apply(null, s.hourly.concat([1]));
+      var ch = $("chart"); ch.textContent = "";
+      s.hourly.forEach(function (v) { var i = document.createElement("i"); i.style.height = Math.max(3, v / max * 88) + "px"; i.title = v + " " + t("requests"); ch.appendChild(i) });
+      var lg = $("log"); lg.textContent = "";
+      s.recent.forEach(function (r) {
+        var tr = document.createElement("tr");
+        [r.ts.slice(11, 19) + " UTC", r.path, r.status, Math.round(r.ms) + " ms"].forEach(function (v) {
+          var td = document.createElement("td"); td.textContent = v; tr.appendChild(td);
+        });
+        lg.appendChild(tr);
+      });
+    }
+    function loadStats() {
+      fetch("/api/stats").then(function (r) { return r.json() }).then(function (s) { lastStats = s; renderStats(s) }).catch(function () { });
+    }
+    function loadProfile() {
+      fetch(withLang("/api/profile")).then(function (r) { return r.json() }).then(function (p) {
+        $("name").textContent = p.name; $("title").textContent = p.title + " · " + p.location;
+      }).catch(function () { });
+    }
+    function applyLang() {
+      document.documentElement.lang = LANG;
+      document.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t(el.getAttribute("data-i18n")) });
+      document.querySelectorAll(".lang button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === LANG)) });
+      $("photo").alt = t("photo");
+      $("full").href = withLang("/api/cv");
+      $("curl").textContent = "curl https://rexelebe.de" + withLang("/api/skills");
+      buildEndpoints();
+      loadProfile();
+      if (current) { send(current, document.querySelector(".ep.on")) } else { $("out").textContent = t("click"); $("meta").textContent = "" }
+      if (lastStats) renderStats(lastStats);
+    }
+    function setLang(l) {
+      if (l === LANG) return;
+      LANG = l;
+      try { localStorage.setItem("lang", l) } catch (e) { }
+      try { var u = new URL(location.href); if (l === "de") { u.searchParams.set("lang", "de") } else { u.searchParams.delete("lang") } history.replaceState(null, "", u) } catch (e) { }
+      applyLang();
+    }
+    document.querySelectorAll(".lang button").forEach(function (b) { b.onclick = function () { setLang(b.getAttribute("data-lang")) } });
+    applyLang();
+    loadStats(); setInterval(loadStats, 15000);
+  </script>
 </body>
+
 </html>
