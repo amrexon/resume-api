@@ -4,7 +4,7 @@
     "title": "Angehender IT-Spezialist",
     "location": "Bremen, Deutschland",
     "seeking": "Ausbildung oder Einstiegsposition in der IT",
-    "intro": "Ich suche eine Einstiegsposition in der IT oder eine Ausbildung, die 2027 beginnt. Ich betreibe diese Seite als Backend-Übung: Eine FastAPI-API dient meinem Lebenslauf als JSON und protokolliert grundlegende Anfragestatistiken. Meine Studien umfassten Informatik, Robotik, C/C++ und MATLAB, und ich baue nun darauf auf mit praktischen Projekten.",
+    "summary": "Ich interessiere mich für Stellen in den Bereichen Cloud-Architektur und -Entwicklung, Robotik, Softwareentwicklung, Cybersicherheit, Data Engineering und Big Data, Automatisierung in der Luftfahrt sowie maschinelles Lernen. Ich bilde mich ständig weiter, halte mich über Branchentrends auf dem Laufenden und strebe danach, innovative und effiziente Lösungen zu entwickeln. Dieser Lebenslauf ist selbst ein kleines Backend-Projekt.",
     "languages": [
       {"language": "Englisch", "level": "Muttersprache"},
       {"language": "Deutsch", "level": "B1"}
